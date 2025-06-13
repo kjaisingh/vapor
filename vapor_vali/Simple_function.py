@@ -1205,7 +1205,7 @@ def ref_seq_readin(ref,chrom,start,end,reverse_flag='FALSE'):
 
 def result_organize_ins(info_list):
     #eg of info_list=[key_event,vapor_score_event]=['chr2_82961201', [-9.228366096827557, -106.46718851834126, -667.0858781654538, -38.56838396416415, -64.87185751169045, -147.77261544769615, -28.29536680099185, -25.378519434143666, -17.23542013374081, -113.00564782332029, -64.53043553409316]]
-    if len(info_list[1])>1:
+    if len(info_list[1])>0:
         pos_values=[i for i in info_list[1] if float(i)>0.1]
         neg_values=[i for i in info_list[1] if not float(i)>0.1]
         geno_value=float(len(pos_values))/float(len(pos_values)+len(neg_values))
@@ -1443,8 +1443,8 @@ def sv_insert_point_define(pin):
     return svtype
 
 def take_off_symmetric_dots(list_dotdata):
-    left_part=[list_dotdata[i] for i in range(len(list_dotdata)/2)]
-    right_part=[list_dotdata[i][::-1] for i in [len(list_dotdata)-1-i for i in range(len(list_dotdata)/2)]]
+    left_part=[list_dotdata[i] for i in range(int(len(list_dotdata)/2))]
+    right_part=[list_dotdata[i][::-1] for i in [len(list_dotdata)-1-i for i in range(int(len(list_dotdata)/2))]]
     left_new=[i for i in left_part if eu_dis_single_dot(i)>0.15]
     right_new=[i for i in right_part if eu_dis_single_dot(i)>0.15]
     sym_dots=[]
@@ -2099,6 +2099,6 @@ def X_means_cluster(data_list):
 def X_means_cluster_reformat(data_list):
     out=X_means_cluster(data_list)
     out2=[]
-    for y in range(len(out)/2):
+    for y in range(int(len(out)/2)):
         out2.append([out[2*y],out[2*y+1]])
     return out2
