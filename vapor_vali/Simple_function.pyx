@@ -1444,8 +1444,8 @@ def sv_insert_point_define(pin):
     return svtype
 
 def take_off_symmetric_dots(list_dotdata):
-    left_part=[list_dotdata[i] for i in range(len(list_dotdata)/2)]
-    right_part=[list_dotdata[i][::-1] for i in [len(list_dotdata)-1-i for i in range(len(list_dotdata)/2)]]
+    left_part=[list_dotdata[i] for i in range(int(len(list_dotdata)/2))]
+    right_part=[list_dotdata[i][::-1] for i in [len(list_dotdata)-1-i for i in range(int(len(list_dotdata)/2))]]
     left_new=[i for i in left_part if eu_dis_single_dot(i)>0.15]
     right_new=[i for i in right_part if eu_dis_single_dot(i)>0.15]
     sym_dots=[]
@@ -2099,6 +2099,6 @@ def X_means_cluster(data_list):
 def X_means_cluster_reformat(data_list):
     out=X_means_cluster(data_list)
     out2=[]
-    for y in range(len(out)/2):
+    for y in range(int(len(out)/2)):
         out2.append([out[2*y],out[2*y+1]])
     return out2
