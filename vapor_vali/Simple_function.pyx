@@ -501,9 +501,9 @@ def compute_bic(kmeans,X):
     cl_var=[]
     for i in range(m):
         if not n[i] - m==0:
-            cl_var.append((1.0 / (n[i] - m)) * sum(distance.cdist(X[np.where(labels == i)], [centers[0][i]], 'euclidean')**2))
+            cl_var.append((1.0 / (n[i] - m)) * sum(distance.cdist(X[np.where(labels == i)], centers[0][i].reshape(1, -1), 'euclidean')**2))
         else:
-            cl_var.append(float(10**20) * sum(distance.cdist(X[np.where(labels == i)], [centers[0][i]], 'euclidean')**2))
+            cl_var.append(float(10**20) * sum(distance.cdist(X[np.where(labels == i)], centers[0][i].reshape(1, -1), 'euclidean')**2))
     const_term = 0.5 * m * calcu_log10(N)
     BIC = np.sum([n[i] * calcu_log10(n[i]) -
            n[i] * calcu_log10(N) -
