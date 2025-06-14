@@ -108,5 +108,5 @@ RUN pip3 install --no-cache-dir Cython && \
     cd /opt && \
     git clone https://github.com/kjaisingh/vapor.git && \
     cd /opt/vapor/ && \
-    git checkout 87548106cec6a722df2eba313571ed21b6cf39eb && \
+    git checkout 4ef8b9ee72de10704a8848de0c856bfa369136f9 && \
     pip3 install -e .
